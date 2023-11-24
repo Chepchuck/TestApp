@@ -1,0 +1,47 @@
+POST http://127.0.0.1:8080/user
+Content-Type: application/json
+
+{
+  "id": "1",
+  "login": "alexander",
+  "pass": "1234",
+  "coder": "MD2"
+}
+
+###
+POST http://127.0.0.1:8080/user
+Content-Type: application/json
+
+{
+  "id": "2",
+  "login": "petr",
+  "pass": "1234",
+  "coder": "MD5"
+}
+
+###
+POST http://127.0.0.1:8080/user
+Content-Type: application/json
+
+{
+  "id": "3",
+  "login": "vasya",
+  "pass": "1234",
+  "coder": "SHA-256"
+}
+
+###
+GET http://127.0.0.1:8080/user
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/user/1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/user/2
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/user/3
+Accept: application/json
