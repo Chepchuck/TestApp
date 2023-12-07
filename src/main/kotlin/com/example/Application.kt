@@ -1,5 +1,6 @@
 package com.example
 
+import com.example.dao.DatabaseSingleton
 import com.example.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -11,6 +12,7 @@ fun main() {
 }
 
 fun Application.module() {
+    DatabaseSingleton.init()
     configureSerialization()
     configureRouting()
 }
