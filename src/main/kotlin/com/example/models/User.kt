@@ -6,20 +6,20 @@ import java.util.UUID
 
 @Serializable
 data class User(
-    var uuid: String = UUID.randomUUID().toString(),
+    val uuid: String = UUID.randomUUID().toString(),
     val login: String,
-    val password: String,
-    val firstName: String,
-    val lastName: String,
-    var hash: String = "md5",
-    val passHash: String? = null
+    var password: String,
+    var firstName: String,
+    var lastName: String,
+    val hash: String = "md5",
+    var passHash: String? = null
 )
 
 object Users : Table(){
-    val uuid = varchar("uuid", 36)
-    val login = varchar("login", 20)
-    var firstName = varchar("firstName", 30)
-    var lastName = varchar("lastName", 30)
-    var passHash = varchar("passHash", 36)
+    val uuid = varchar("UUID", 36)
+    val login = varchar("Login", 30)
+    var firstName = varchar("First Name", 30)
+    var lastName = varchar("Last Name", 30)
+    var passHash = varchar("Password hash", 36)
     override val primaryKey = PrimaryKey(uuid, name = "PK_User_UUID")
 }
