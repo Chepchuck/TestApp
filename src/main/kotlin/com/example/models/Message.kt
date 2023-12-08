@@ -10,11 +10,12 @@ data class Message (
     val chatId: Int,
     val senderId: String
 )
+// TODO: У сообщения не хватает времени отправки
 
 object Messages : IntIdTable(){
     val text = varchar("text", 256)
     val chatId = integer("chatId")
-        .uniqueIndex()
+        .uniqueIndex() // почему uniqueIndex, а не unique?
         .references(Chats.id)
     val senderId = varchar("senderId", 36)
         .uniqueIndex()

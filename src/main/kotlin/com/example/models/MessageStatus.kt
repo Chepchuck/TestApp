@@ -13,7 +13,7 @@ data class MessageStatus (
 
 object MessageStatuses : Table() {
     val messageId = integer("Message Id")
-        .uniqueIndex()
+        .uniqueIndex() // почему uniqueIndex, а не unique?
         .references(Messages.id)
     val userId = varchar("User UUID", 36)
         .uniqueIndex()

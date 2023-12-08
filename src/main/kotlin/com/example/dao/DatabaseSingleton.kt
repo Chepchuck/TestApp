@@ -18,7 +18,7 @@ object DatabaseSingleton {
 
         transaction(database) {
             addLogger(StdOutSqlLogger)
-
+            // Зачем дропаем таблицы при каждом запуске приложения? Мы же потеряем все данные которые там лежат(
             SchemaUtils.drop(MessageStatuses)
             SchemaUtils.drop(Messages)
             SchemaUtils.drop(Chats)
@@ -29,7 +29,6 @@ object DatabaseSingleton {
             SchemaUtils.createMissingTablesAndColumns(MessageStatuses)
         }
     }
-
 
     /*suspend fun <T> dbQuery(block: suspend () -> T): T =
         newSuspendedTransaction(Dispatchers.IO) {block()}*/

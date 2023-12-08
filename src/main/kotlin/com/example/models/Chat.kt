@@ -7,6 +7,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 data class Chat(
     val id: Int,
     val name: String
+ // Я бы добавила список участников чата, также необходима промежуточная таблица для связей
 )
 
 object Chats : IntIdTable(){
