@@ -1,10 +1,7 @@
 package com.example.models
 
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.dao.id.IdTable
 import org.jetbrains.exposed.dao.id.UUIDTable
-import org.jetbrains.exposed.sql.Table
-import java.util.UUID
 
 @Serializable
 data class User(
