@@ -1,23 +1,21 @@
 package com.example.models
 
 import kotlinx.serialization.Serializable
+import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.javatime.date
 
 @Serializable
 data class Message (
-    val id: Int,
     val text: String,
-    val chatId: Int,
-    val senderId: String
+    val sender: User,
+    val sendDate: LocalDate
 )
-// TODO: У сообщения не хватает времени отправки
+//TODO: У сообщения не хватает времени отправки (исправлено)
 
-object Messages : IntIdTable(){
+object MessageTable : IntIdTable() {
     val text = varchar("text", 256)
-    val chatId = integer("chatId")
-        .uniqueIndex() // почему uniqueIndex, а не unique?
-        .references(Chats.id)
-    val senderId = varchar("senderId", 36)
-        .uniqueIndex()
-        .references(Users.uuid)
+    val chatId = reference("Chat_id", ChatTable.id)
+    val senderId = reference("User_id", UserTable.id)
+    val sendDate = date("Send date")
 }

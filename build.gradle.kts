@@ -33,6 +33,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+    //datetime
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
     //PostgreSQL
     implementation("org.postgresql:postgresql:42.6.0")
     implementation("ch.qos.logback:logback-classic:$logback_version")

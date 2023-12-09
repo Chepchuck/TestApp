@@ -19,14 +19,14 @@ object DatabaseSingleton {
         transaction(database) {
             addLogger(StdOutSqlLogger)
             // Зачем дропаем таблицы при каждом запуске приложения? Мы же потеряем все данные которые там лежат(
-            SchemaUtils.drop(MessageStatuses)
-            SchemaUtils.drop(Messages)
-            SchemaUtils.drop(Chats)
-            SchemaUtils.drop(Users)
-            SchemaUtils.createMissingTablesAndColumns(Users)
-            SchemaUtils.createMissingTablesAndColumns(Chats)
-            SchemaUtils.createMissingTablesAndColumns(Messages)
-            SchemaUtils.createMissingTablesAndColumns(MessageStatuses)
+            //SchemaUtils.drop(MessageStatuses)
+            //SchemaUtils.drop(Messages)
+            //SchemaUtils.drop(Chats)
+            SchemaUtils.drop(UserTable)
+            SchemaUtils.createMissingTablesAndColumns(UserTable)
+            //SchemaUtils.createMissingTablesAndColumns(Chats)
+            //SchemaUtils.createMissingTablesAndColumns(Messages)
+            //SchemaUtils.createMissingTablesAndColumns(MessageStatuses)
         }
     }
 
