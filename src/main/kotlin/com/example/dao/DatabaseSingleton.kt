@@ -1,10 +1,7 @@
 package com.example.dao
 
-import com.example.models.*
-import com.example.security.Hashing
-import kotlinx.coroutines.Dispatchers
+import com.example.data.*
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object DatabaseSingleton {
@@ -18,18 +15,11 @@ object DatabaseSingleton {
 
         transaction(database) {
             addLogger(StdOutSqlLogger)
-            // Зачем дропаем таблицы при каждом запуске приложения? Мы же потеряем все данные которые там лежат(
-            //SchemaUtils.drop(MessageStatuses)
-            //SchemaUtils.drop(Messages)
-            //SchemaUtils.drop(Chats)
-            SchemaUtils.drop(UserTable)
             SchemaUtils.createMissingTablesAndColumns(UserTable)
-            //SchemaUtils.createMissingTablesAndColumns(Chats)
-            //SchemaUtils.createMissingTablesAndColumns(Messages)
-            //SchemaUtils.createMissingTablesAndColumns(MessageStatuses)
+            SchemaUtils.createMissingTablesAndColumns(ChatTable)
+            SchemaUtils.createMissingTablesAndColumns(MessageTable)
+            SchemaUtils.createMissingTablesAndColumns(MessageStatusTable)
+            SchemaUtils.createMissingTablesAndColumns(ChatParticipantsTable)
         }
     }
-
-    /*suspend fun <T> dbQuery(block: suspend () -> T): T =
-        newSuspendedTransaction(Dispatchers.IO) {block()}*/
 }

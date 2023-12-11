@@ -1,7 +1,6 @@
 package com.example.models
 
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.dao.id.IntIdTable
 
 @Serializable
 data class Chat(
@@ -11,7 +10,3 @@ data class Chat(
  /**Как я понимаю, промежуточная таблица необходима для связи Users и Chats, возможно ли эту
   * связь реализовать через таблицу Messages?*/
 )
-
-object ChatTable : IntIdTable(){
-    val name = varchar("name", 20)
-}
