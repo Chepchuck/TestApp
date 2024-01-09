@@ -7,7 +7,16 @@ Content-Type: application/json
   "pass": "1234",
   "coder": "MD2"
 }
+###
+GET http://127.0.0.1:8080/api/auth/login
+Content-Type: application/json
 
+{
+  "login": "admin",
+  "firstName": "Alexander",
+  "lastName": "Chistyakov",
+  "password": "1234"
+}
 ###
 POST http://127.0.0.1:8080/user
 Content-Type: application/json

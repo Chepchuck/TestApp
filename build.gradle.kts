@@ -25,8 +25,8 @@ repositories {
 
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm")
     //Exposed
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
@@ -37,7 +37,15 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
     //PostgreSQL
     implementation("org.postgresql:postgresql:42.6.0")
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("io.ktor:ktor-server-auth-jvm:2.3.6")
+    implementation("io.ktor:ktor-client-core-jvm:2.3.6")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation("io.ktor:ktor-server-sessions-jvm:2.3.6")
+    implementation("io.ktor:ktor-client-apache:2.3.6")
+    implementation("io.ktor:ktor-client-encoding:2.3.6")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }

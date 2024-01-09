@@ -9,4 +9,3 @@ data class Message (
     val sender: User,
     val sendDate: Instant
 )
-//TODO: У сообщения не хватает времени отправки (исправлено)
