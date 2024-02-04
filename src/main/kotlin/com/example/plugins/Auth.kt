@@ -1,20 +1,35 @@
 package com.example.plugins
 
-import com.example.dao.DatabaseSingleton
-import com.example.security.digestFunction
+import com.auth0.jwt.JWT
+import com.auth0.jwt.algorithms.Algorithm
+import com.example.models.User
+import com.example.repository.UserRepository
+import com.example.security.Hashing.getHash
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
-val hashedUserTable = UserHashedTableAuth(
-    table = DatabaseSingleton.selectAuthInfo(),
-    digester = digestFunction
-)
+import io.ktor.server.auth.jwt.*
+import io.ktor.server.response.*
+
 
 fun Application.configureAuth() {
-    authentication {
-        basic("auth-basic") {
-            realm = "Ktor Server"
-            validate { credentials ->
-                hashedUserTable.authenticate(credentials)
+    val secret = environment.config.property("jwt.secret").getString()
+    val issuer = environment.config.property("jwt.issuer").getString()
+    val audience = environment.config.property("jwt.audience").getString()
+    val myRealm = environment.config.property("jwt.realm").getString()
+
+    // Please read the jwt property from the config file if you are using EngineMain
+    install(Authentication) {
+        jwt("auth-jwt"){
+            realm = myRealm
+            verifier(JWT
+                .require(Algorithm.HMAC256(secret))
+                .withAudience(audience)
+                .withIssuer(issuer)
+                .build()
+            )
+            challenge{defaultScheme, realm ->
+                call.respond(HttpStatusCode.Unauthorized, "Token is not valid or has expired")
             }
         }
     }
