@@ -33,7 +33,7 @@ fun Route.authRouting(authService: AuthService) {
             }
             val token = tokenManager.generateJWTToken(userCredentials)
             userSession.add(UserSession(token))
-            call.respond(HttpStatusCode.OK)
+            call.respond(hashMapOf("token" to token, "status" to HttpStatusCode.OK.toString()))
         }
         authenticate("auth-jwt") {
             post("/logout") {

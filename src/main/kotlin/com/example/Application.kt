@@ -13,7 +13,7 @@ fun main() {
 
 fun Application.module() {
     DatabaseSingleton.init()
-    configureAuth()
     configureSerialization()
+    configureAuth()
     configureRouting()
 }
